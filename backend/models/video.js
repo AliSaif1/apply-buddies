@@ -1,11 +1,15 @@
 import mongoose from "mongoose";
 
-const Video = new mongoose.Schema(
+const VideoSchema = new mongoose.Schema(
     {
-        video_id: { type: String, required: true, trim: true },
+        yt_video_id: { type: String, required: true, trim: true },
         title: { type: String, required: true, trim: true },
-        country: { type: String, enum: ["Germany", "Italy", "Canada", "USA", "Australia", "UK", "Austria"] },
-    }
+        country: { type: String, required: true },
+        category: { type: String, required: true },
+        likedBy: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
+        viewedBy: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
+    },
+    { timestamps: true } 
 );
 
-export default mongoose.model("Video", Video);
+export default mongoose.model("Video", VideoSchema);
