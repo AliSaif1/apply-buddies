@@ -11,7 +11,6 @@ connectDB();
 app.use(express.json());
 app.use(cors());
 
-
 app.use('/apply-buddies', routerBranching);
 
 app.listen(port, () => {

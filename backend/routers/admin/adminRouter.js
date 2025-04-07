@@ -1,9 +1,9 @@
-import { Router } from "express";
-
+import { Router } from 'express';
+import UserController from '../../controllers/userController.js';
 
 const adminRouter = Router();
-adminRouter.get("/", (req, res)=>{
-    res.send("admin response");
-})
+
+adminRouter.post('/register', UserController.registerAdmin);
+// adminRouter.post('/forgot-password', UserController.forgotPassword);
 
 export default adminRouter;
