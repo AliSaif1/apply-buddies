@@ -1,9 +1,9 @@
 import { Router } from 'express';
-import UserController from '../../controllers/userController.js';
+import authRouter from "./auth/authRouter.js";
+import contentRouter from "./content/contentRouter.js";
 
 const adminRouter = Router();
-
-adminRouter.post('/register', UserController.registerAdmin);
-// adminRouter.post('/forgot-password', UserController.forgotPassword);
+adminRouter.use('/auth', authRouter);
+adminRouter.use('/content', contentRouter);
 
 export default adminRouter;
