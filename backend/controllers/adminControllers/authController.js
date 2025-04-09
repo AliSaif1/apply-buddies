@@ -111,34 +111,71 @@ class authController {
     static async verifyOTP(req, res) {
         try {
             const { email, otp } = req.body;
-
+    
             const admin = await User.findOne({ email });
             if (!admin) {
                 return res.status(404).json({ message: 'Admin not found' });
             }
-
+    
             // Check if OTP exists and is still valid
             if (admin.otp !== parseInt(otp)) {
                 return res.status(400).json({ message: 'Invalid OTP' });
             }
-
+    
             // Check if OTP has expired
             if (Date.now() > admin.otpExpiration) {
                 return res.status(400).json({ message: 'OTP has expired' });
             }
-
+    
             // After successful verification, delete the OTP and its expiration time
             admin.otp = undefined;
             admin.otpExpiration = undefined;
             await admin.save();
-
-            return res.status(200).json({ message: 'OTP verified successfully' });
-
+    
+            // Generate reset token (valid for 10 minutes)
+            const resetToken = jwt.sign({ email }, process.env.JWT_SECRET, { expiresIn: '10m' });
+    
+            return res.status(200).json({
+                message: 'OTP verified successfully',
+                resetToken
+            });
+    
         } catch (error) {
             console.error('Error in verifyOTP:', error);
             return res.status(500).json({ message: 'Server error' });
         }
     }
+    
+    static async resetPassword(req, res) {
+        try {
+            const { resetToken, newPassword } = req.body;
+    
+            if (!resetToken || !newPassword) {
+                return res.status(400).json({ message: 'Reset token and new password are required' });
+            }
+    
+            // Verify reset token
+            const decoded = jwt.verify(resetToken, process.env.JWT_SECRET);
+    
+            const admin = await User.findOne({ email: decoded.email });
+            if (!admin) {
+                return res.status(404).json({ message: 'Admin not found' });
+            }
+    
+            // Hash the new password before saving
+            const hashedPassword = await bcrypt.hash(newPassword, 10);
+    
+            // Update the password
+            admin.password = hashedPassword;
+            await admin.save();
+    
+            return res.status(200).json({ message: 'Password reset successfully' });
+    
+        } catch (error) {
+            console.error('Error resetting password:', error);
+            return res.status(500).json({ message: 'Server error' });
+        }
+    }    
 }
 
 export default authController;
