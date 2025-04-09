@@ -1,11 +1,17 @@
 import { Router } from 'express';
-import VideoController from '../../../controllers/videoController.js';
-import UniversityController from '../../../controllers/universityController.js';
-import verifyToken from '../../../middleware/verifyToken.js';
+import videoRouter from './video/videoRouters.js';
+import universityRouter from './university/universityRouter.js';
+import scholarshipRouter from './scholarship/scholarshipRouter.js';
+import programRouter from './program/programRouter.js';
+import countryRouter from './country/countryRouter.js';
 
 const contentRouter = Router();
 
-contentRouter.post('/uploadVideo', verifyToken, VideoController.uploadVideo);
-contentRouter.post('/addUniversity', verifyToken, UniversityController.addUniversity);
+contentRouter.use('/video', videoRouter);
+contentRouter.use('/scholarship', scholarshipRouter);
+contentRouter.use('/university', universityRouter);
+contentRouter.use('/program', programRouter);
+contentRouter.use('/country', countryRouter);
+
 
 export default contentRouter;

@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
-import User, { userValidationSchema } from '../models/user.js';
-import sendResetEmail from '../utils/sendResetEmail.js';
+import User, { userValidationSchema } from '../../models/user.js';
+import sendResetEmail from '../../utils/sendResetEmail.js';
 
 class authController {
     static async registerAdmin(req, res) {
