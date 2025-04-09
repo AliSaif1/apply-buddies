@@ -3,7 +3,7 @@ import Video from '../models/video.js';
 class VideoController {
     static async uploadVideo(req, res) {
         try {
-            const { yt_video_id, title, category, country } = req.body;
+            const { yt_video_id, title, category, country, university } = req.body;
 
             // Validate required fields
             if (!yt_video_id || !title || !category || !country || !req.user.id) {
@@ -16,6 +16,7 @@ class VideoController {
                 title,
                 category,
                 country,
+                university,
                 userId: req.user.id
             });
 
