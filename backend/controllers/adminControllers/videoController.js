@@ -1,4 +1,5 @@
 import Video from '../../models/contentModels/video.js';
+import moment from 'moment';
 
 class VideoController {
     // Upload a video
@@ -86,6 +87,53 @@ class VideoController {
             return res.status(500).json({ message: 'Server error' });
         }
     }
+
+    static async getVideoStats(req, res) {
+        try {
+            const { duration } = req.body;
+
+            let startDate;
+
+            switch (duration) {
+                case 'day':
+                    startDate = moment().subtract(1, 'days').toDate();
+                    break;
+                case 'week':
+                    startDate = moment().subtract(1, 'weeks').toDate();
+                    break;
+                case 'month':
+                    startDate = moment().subtract(1, 'months').toDate();
+                    break;
+                case 'year':
+                    startDate = moment().subtract(1, 'years').toDate();
+                    break;
+                default:
+                    startDate = null; // Lifetime
+            }
+
+            const query = startDate ? { createdAt: { $gte: startDate } } : {};
+
+            const videos = await Video.find(query);
+
+            const totalVideos = videos.length;
+            const totalLikes = videos.reduce((sum, video) => sum + (video.likedBy?.length || 0), 0);
+            const totalViews = videos.reduce((sum, video) => sum + (video.viewedBy?.length || 0), 0);
+
+            return res.status(200).json({
+                message: 'Video stats fetched successfully',
+                data: {
+                    totalVideos,
+                    totalLikes,
+                    totalViews,
+                    duration: duration || 'lifetime',
+                },
+            });
+        } catch (error) {
+            console.error('Error getting video stats:', error);
+            return res.status(500).json({ message: 'Server error' });
+        }
+    }
+
 }
 
 export default VideoController;
