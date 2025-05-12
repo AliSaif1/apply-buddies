@@ -12,12 +12,12 @@ const HeroSection = () => {
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary-dark font-serif leading-snug sm:leading-tight">
               Find Your Perfect <span className="text-secondary block sm:inline">Education Pathway</span>
             </h1>
-            
+
             <p className="text-base sm:text-lg text-gray-700">
               Discover scholarships, universities, and courses tailored to your dreams and academic goals.
               We've helped over 50,000 students find their ideal education opportunities.
             </p>
-            
+
             {/* Search Box - Stacked on mobile */}
             <div className="bg-white rounded-xl shadow-card overflow-hidden transition-all duration-300 hover:shadow-card-hover">
               <div className="flex overflow-x-auto no-scrollbar border-b border-neutral-dark">
@@ -31,25 +31,29 @@ const HeroSection = () => {
                   <FaBook className="text-sm sm:text-base" /> <span className="text-sm sm:text-base">Courses</span>
                 </button>
               </div>
-              
+
               <div className="p-3 sm:p-4">
                 <div className="flex flex-col sm:flex-row gap-2">
                   <div className="flex-1 relative">
-                    <input 
-                      type="text" 
-                      placeholder="Search for scholarships..." 
+                    <input
+                      type="text"
+                      placeholder="Search for scholarships..."
                       className="w-full pl-4 pr-10 py-2 sm:py-3 border border-neutral-dark rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent text-sm sm:text-base"
                     />
                     <FaSearch className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm sm:text-base" />
                   </div>
-                  <select className="border border-neutral-dark rounded-lg px-3 sm:px-4 py-2 sm:py-3 focus:ring-2 focus:ring-accent focus:border-transparent text-sm sm:text-base">
-                    <option>All Countries</option>
-                    <option>USA</option>
-                    <option>UK</option>
-                    <option>Canada</option>
-                    <option>Australia</option>
-                  </select>
-                  <button className="bg-secondary hover:bg-secondary-light text-white font-medium py-2 sm:py-3 px-4 sm:px-6 rounded-lg transition-colors flex items-center gap-2 justify-center text-sm sm:text-base">
+
+                  <div className="relative w-full sm:w-auto sm:flex-1">
+                    <select className="border border-neutral-dark rounded-lg px-3 sm:px-4 py-2 sm:py-3 focus:ring-2 focus:ring-accent focus:border-transparent text-sm sm:text-base pr-8 w-full truncate">
+                      <option>All Countries</option>
+                      <option>USA</option>
+                      <option>UK</option>
+                      <option>Canada</option>
+                      <option>Australia</option>
+                    </select>
+                  </div>
+
+                  <button className="w-full sm:w-auto bg-secondary hover:bg-secondary-light text-white font-medium py-2 sm:py-3 px-4 sm:px-6 rounded-lg transition-colors flex items-center gap-2 justify-center text-sm sm:text-base">
                     <FaSearch className="text-sm sm:text-base" /> <span>Search</span>
                   </button>
                 </div>
@@ -69,9 +73,9 @@ const HeroSection = () => {
           {/* Image Section - Full width on mobile */}
           <div className="w-full lg:w-1/2 mt-8 lg:mt-0">
             <div className="relative">
-              <img 
-                src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80" 
-                alt="Happy students celebrating graduation" 
+              <img
+                src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80"
+                alt="Happy students celebrating graduation"
                 className="rounded-xl shadow-xl w-full object-cover h-64 sm:h-80 md:h-96 lg:h-auto"
                 loading="lazy"
               />

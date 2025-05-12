@@ -44,7 +44,7 @@ const FeaturesSection = () => {
     <section className="py-16 bg-neutral-DEFAULT">
       <div className="container mx-auto px-4 max-w-6xl">
         <h3 className="text-3xl font-bold text-primary-dark mb-12 text-center font-serif">
-          Why Choose EduFind?
+          Why Choose Apply Buddies?
           <span className="block w-16 h-1 bg-secondary-DEFAULT mx-auto mt-4"></span>
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
