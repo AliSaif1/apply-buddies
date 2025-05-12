@@ -7,14 +7,14 @@ const Footer = () => {
     <footer className="bg-primary-dark text-white pt-12 pb-6">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-          
+
           {/* Brand Column */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <img 
-                src="/logo-white.png" 
-                alt="ApplyBuddies Logo" 
-                className="h-8 w-8"
+              <img
+                src="/logo.png"
+                alt="ApplyBuddies Logo"
+                className="h-8 w-8 rounded-full"
               />
               <h2 className="text-xl font-bold font-serif">
                 <span className="text-secondary">Apply</span>Buddies
@@ -38,7 +38,7 @@ const Footer = () => {
               </a>
             </div>
           </div>
-          
+
           {/* Quick Links */}
           <div className="space-y-4">
             <h5 className="text-lg font-bold border-b border-accent pb-2">Quick Links</h5>
@@ -49,7 +49,7 @@ const Footer = () => {
               <li><a href="/premium" className="text-neutral-dark hover:text-white transition-colors flex items-center">FAQ</a></li>
             </ul>
           </div>
-          
+
           {/* Resources */}
           <div className="space-y-4">
             <h5 className="text-lg font-bold border-b border-accent pb-2">Resources</h5>
@@ -60,7 +60,7 @@ const Footer = () => {
               <li><a href="/student-stories" className="text-neutral-dark hover:text-white transition-colors">Student Stories</a></li>
             </ul>
           </div>
-          
+
           {/* Contact */}
           <div className="space-y-4">
             <h5 className="text-lg font-bold border-b border-accent pb-2">Contact</h5>
@@ -80,7 +80,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        
+
         {/* Bottom Footer */}
         <div className="border-t border-primary pt-6 flex flex-col md:flex-row justify-between items-center">
           <p className="text-neutral-dark text-sm mb-4 md:mb-0">

@@ -38,7 +38,7 @@ const Header = () => {
             <img 
               src="/logo.png" 
               alt="ApplyBuddies Logo" 
-              className="h-8 w-8 md:h-10 md:w-10"
+              className="h-8 w-8 md:h-10 md:w-10 rounded-full"
             />
             <h1 className="text-xl md:text-2xl font-bold text-primary font-serif">
               <span className="text-secondary">Apply</span>Buddies

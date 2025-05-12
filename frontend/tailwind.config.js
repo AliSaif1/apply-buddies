@@ -7,14 +7,15 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#3A5A78', // Deep academic blue
-          light: '#4B6B8A',
-          dark: '#2A4A68',
+          DEFAULT: '#000000', // Black
+          light: '#4d4d4d',
+          dark: '#1a1a1a',
+          grey: '#2e2e2e'
         },
         secondary: {
-          DEFAULT: '#E9B44C', // Golden opportunity
-          light: '#FAC55D',
-          dark: '#D8A33B',
+          DEFAULT: '#8dfd05', // shiny green
+          light: '#b7ff66',
+          dark: '#4c7300',
         },
         accent: {
           DEFAULT: '#5B9279', // Growth green

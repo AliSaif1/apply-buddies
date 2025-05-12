@@ -47,7 +47,7 @@ const ScholarshipTestimonials = () => {
   };
 
   return (
-    <section className="py-16 bg-gradient-to-r from-primary to-primary-dark text-white">
+    <section className="py-16 bg-gradient-to-r from-primary-light to-primary-grey text-white">
       <div className="container mx-auto px-4 sm:px-6 max-w-6xl">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold font-serif mb-4">
