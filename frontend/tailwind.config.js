@@ -7,29 +7,29 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#000000', // Black
-          light: '#4d4d4d',
-          dark: '#1a1a1a',
-          grey: '#2e2e2e'
+          DEFAULT: '#121212', // Slightly softer than pure black
+          light: '#424242',  // More neutral gray
+          dark: '#0a0a0a',   // Richer dark shade
+          grey: '#2d2d2d'   // More balanced gray
         },
         secondary: {
-          DEFAULT: '#8dfd05', // shiny green
-          light: '#b7ff66',
-          dark: '#4c7300',
+          DEFAULT: '#3a7d0a',  // More mature green
+          light: '#4d9e0f',   // Brighter but still professional
+          dark: '#2d5f08',    // Deeper shade
         },
         accent: {
-          DEFAULT: '#5B9279', // Growth green
-          light: '#6CA38A',
-          dark: '#4A8168',
+          DEFAULT: '#4a7d64',  // Desaturated for elegance
+          light: '#5c8d76',     // Subtle light variant
+          dark: '#3a6b54',      // More sophisticated dark
         },
         neutral: {
-          DEFAULT: '#F5F7FA', // Light background
-          dark: '#E1E4E8',
+          DEFAULT: '#f5f9f6',  // Cleaner off-white
+          dark: '#e8f0ea',     // Slightly darker variant
         },
-        info: '#4C8BF5',
-        success: '#5B9279',
-        warning: '#E9B44C',
-        error: '#E15554',
+        info: '#0a7d1a',       // More subdued green
+        success: '#4a7d64',    // Matching accent color
+        warning: '#d4a53c',    // Muted gold
+        error: '#c44c4b',      // Less intense red
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
