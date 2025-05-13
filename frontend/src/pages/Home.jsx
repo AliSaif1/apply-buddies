@@ -8,6 +8,7 @@ import UniversitiesSection from '../components/home/University';
 import ServicesSection from '../components/home/Service';
 import TestimonialsSection from '../components/home/Testimonal';
 import NewsletterSection from '../components/home/NewsLetter';
+import YoutubeVideoSection from '../components/home/YoutubeVideoSection';
 
 // Animation variants
 const containerVariants = {
@@ -44,9 +45,9 @@ const HomePage = () => {
       <motion.div variants={sectionVariants}>
         <HeroSection />
       </motion.div>
-      
+
       <motion.div variants={sectionVariants}>
-        <FeaturesSection />
+        <YoutubeVideoSection />
       </motion.div>
       
       <motion.div variants={sectionVariants}>
@@ -59,6 +60,10 @@ const HomePage = () => {
       
       <motion.div variants={sectionVariants}>
         <ServicesSection />
+      </motion.div>
+
+      <motion.div variants={sectionVariants}>
+        <FeaturesSection />
       </motion.div>
       
       <motion.div variants={sectionVariants}>
