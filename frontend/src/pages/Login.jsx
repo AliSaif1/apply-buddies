@@ -1,4 +1,3 @@
-// src/pages/LoginPage.js
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -13,44 +12,43 @@ const LoginPage = () => {
     setIsLoading(true);
     // Login logic here
     console.log('Logging in with:', { email, password });
-    // Simulate API call
     setTimeout(() => setIsLoading(false), 1500);
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-neutral-50 to-neutral-100 flex flex-col">
-      {/* Header */}
-      <header className="py-6 px-6 sm:px-8 flex justify-between items-center">
+    <div className="min-h-screen bg-gradient-to-br from-neutral-50 to-neutral-100 flex flex-col justify-between">
+      {/* Header - Improved spacing */}
+      <header className="py-4 px-4 flex justify-between items-center">
         <Link to="/" className="flex items-center space-x-2">
-          <img 
-            src="/logo.png" 
-            alt="Logo" 
-            className="h-8 w-8"
-          />
-          <span className="text-xl font-serif font-bold text-primary">
+          <span className="text-xl font-serif font-bold text-primary-dark">
             <span className="text-secondary">Apply</span>Buddies
           </span>
         </Link>
-        <Link to="/signup" className="text-sm font-medium text-primary hover:underline">
+        <Link 
+          to="/signup" 
+          className="text-sm font-medium text-primary hover:underline whitespace-nowrap ml-2"
+        >
           Don't have an account?
         </Link>
       </header>
 
-      {/* Main Content */}
-      <main className="flex-grow flex items-center justify-center px-4 sm:px-6">
-        <div className="w-full max-w-md">
-          <div className="text-center mb-10">
-            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 font-serif mb-3">
+      {/* Main Content - Simplified single box */}
+      <main className="flex items-center justify-center px-4 py-4">
+        <div className="w-full max-w-md bg-white rounded-xl shadow-md p-6">
+          <div className="text-center mb-6">
+            <h1 className="text-2xl font-bold text-gray-900 font-serif mb-2">
               Welcome back
             </h1>
-            <p className="text-gray-600">
+            <p className="text-gray-600 text-sm">
               Sign in to continue your education journey
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label htmlFor="email" className="sr-only">Email address</label>
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                Email address
+              </label>
               <input
                 id="email"
                 name="email"
@@ -59,13 +57,15 @@ const LoginPage = () => {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-3 border-b border-gray-300 focus:border-primary focus:outline-none bg-transparent placeholder-gray-500"
-                placeholder="Email address"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary"
+                placeholder="your@email.com"
               />
             </div>
 
             <div className="relative">
-              <label htmlFor="password" className="sr-only">Password</label>
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+                Password
+              </label>
               <input
                 id="password"
                 name="password"
@@ -74,13 +74,13 @@ const LoginPage = () => {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-3 border-b border-gray-300 focus:border-primary focus:outline-none bg-transparent placeholder-gray-500 pr-10"
-                placeholder="Password"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary pr-10"
+                placeholder="••••••••"
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-3.5 text-gray-500 hover:text-primary"
+                className="absolute right-3 top-9 text-gray-500 hover:text-primary"
                 aria-label={showPassword ? "Hide password" : "Show password"}
               >
                 {showPassword ? (
@@ -109,47 +109,35 @@ const LoginPage = () => {
                 </label>
               </div>
 
-              <div className="text-sm">
-                <Link to="/forgot-password" className="font-medium text-primary hover:underline">
-                  Forgot password?
-                </Link>
-              </div>
+              <Link to="/forgot-password" className="text-sm font-medium text-primary hover:underline">
+                Forgot password?
+              </Link>
             </div>
 
-            <div>
-              <button
-                type="submit"
-                disabled={isLoading}
-                className={`w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-all ${
-                  isLoading ? 'opacity-80 cursor-not-allowed' : ''
-                }`}
-              >
-                {isLoading ? (
-                  <>
-                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    Signing in...
-                  </>
-                ) : 'Sign in'}
-              </button>
-            </div>
+            <button
+              type="submit"
+              disabled={isLoading}
+              className={`w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-all ${
+                isLoading ? 'opacity-80 cursor-not-allowed' : ''
+              }`}
+            >
+              {isLoading ? 'Signing in...' : 'Sign in'}
+            </button>
           </form>
 
-          <div className="mt-8">
+          <div className="mt-6">
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
                 <div className="w-full border-t border-gray-300"></div>
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-transparent text-gray-500">
+                <span className="px-2 bg-white text-gray-500">
                   Or continue with
                 </span>
               </div>
             </div>
 
-            <div className="mt-6 grid grid-cols-2 gap-3">
+            <div className="mt-4 grid grid-cols-2 gap-3">
               <button
                 type="button"
                 className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50"
@@ -172,8 +160,8 @@ const LoginPage = () => {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="py-6 px-6 sm:px-8 text-center text-sm text-gray-500">
+      {/* Compact Footer */}
+      <footer className="py-4 px-4 text-center text-xs text-gray-500">
         © {new Date().getFullYear()} ApplyBuddies. All rights reserved.
       </footer>
     </div>

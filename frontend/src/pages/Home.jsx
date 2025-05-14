@@ -9,6 +9,7 @@ import ServicesSection from '../components/home/Service';
 import TestimonialsSection from '../components/home/Testimonal';
 import NewsletterSection from '../components/home/NewsLetter';
 import YoutubeVideoSection from '../components/home/YoutubeVideoSection';
+import CountrySection from '../components/home/CountrySection';
 
 // Animation variants
 const containerVariants = {
@@ -44,6 +45,10 @@ const HomePage = () => {
     >
       <motion.div variants={sectionVariants}>
         <HeroSection />
+      </motion.div>
+
+      <motion.div variants={sectionVariants}>
+        <CountrySection />
       </motion.div>
 
       <motion.div variants={sectionVariants}>

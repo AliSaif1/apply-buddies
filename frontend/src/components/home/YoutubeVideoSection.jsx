@@ -1,13 +1,15 @@
-// src/components/YoutubeVideoSection.js
-import React from 'react';
-import { FaPlay, FaHeart, FaEye, FaGlobe, FaUniversity, FaGraduationCap, FaChevronRight } from 'react-icons/fa';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { FaPlay, FaHeart, FaEye, FaGlobe, FaUniversity, FaGraduationCap, FaChevronRight, FaTimes } from 'react-icons/fa';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const YoutubeVideoSection = ({ videos }) => {
+  const [selectedVideo, setSelectedVideo] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   // Sample data structure (will be replaced with your actual data from DB)
   const sampleVideos = [
     {
-      id: 'dQw4w9WgXcQ',
+      id: '1mSaF0a6EmU',
       title: 'How to Get Into Top Universities',
       country: 'United States',
       category: 'Admissions',
@@ -17,7 +19,7 @@ const YoutubeVideoSection = ({ videos }) => {
       viewedBy: 1250
     },
     {
-      id: '9bZkp7q19f0',
+      id: 'nROxnWBhrv0',
       title: 'Scholarship Application Tips',
       country: 'United Kingdom',
       category: 'Scholarships',
@@ -27,7 +29,7 @@ const YoutubeVideoSection = ({ videos }) => {
       viewedBy: 980
     },
     {
-      id: 'JGwWNGJdvx8',
+      id: 'ft3seYIoQfE',
       title: 'STEM Programs Overview',
       country: 'Canada',
       category: 'Programs',
@@ -39,6 +41,17 @@ const YoutubeVideoSection = ({ videos }) => {
   ];
 
   const displayedVideos = videos || sampleVideos;
+
+  const openVideoModal = (video) => {
+    setSelectedVideo(video);
+    setIsModalOpen(true);
+    document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+  };
+
+  const closeVideoModal = () => {
+    setIsModalOpen(false);
+    document.body.style.overflow = 'auto'; // Re-enable scrolling
+  };
 
   return (
     <section className="relative py-16 md:py-24 bg-gradient-to-b from-neutral-50 to-white">
@@ -52,7 +65,7 @@ const YoutubeVideoSection = ({ videos }) => {
         {/* Section header */}
         <div className="text-center mb-12 md:mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-primary-dark font-serif mb-4">
-            Learn From <span className="text-secondary">Successful Students</span>
+            University <span className="text-secondary">Applications Videos</span>
           </h2>
           <p className="text-lg text-neutral-600 max-w-2xl mx-auto">
             Watch real experiences and advice from students who got into top universities worldwide.
@@ -64,10 +77,11 @@ const YoutubeVideoSection = ({ videos }) => {
           {displayedVideos.map((video, index) => (
             <motion.div
               key={video.id}
-              className="bg-white rounded-xl shadow-lg overflow-hidden border border-neutral-200 hover:shadow-xl transition-all duration-300"
+              className="bg-white rounded-xl shadow-lg overflow-hidden border border-neutral-200 hover:shadow-xl transition-all duration-300 cursor-pointer"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
+              onClick={() => openVideoModal(video)}
             >
               {/* Video thumbnail */}
               <div className="relative aspect-video overflow-hidden">
@@ -95,7 +109,13 @@ const YoutubeVideoSection = ({ videos }) => {
               <div className="p-5">
                 <div className="flex items-start justify-between gap-3 mb-3">
                   <h3 className="text-lg font-bold text-neutral-800 line-clamp-2">{video.title}</h3>
-                  <button className="text-neutral-400 hover:text-red-500 transition-colors">
+                  <button
+                    className="text-neutral-400 hover:text-red-500 transition-colors"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      // Handle like functionality here
+                    }}
+                  >
                     <FaHeart className={video.likedBy.length > 0 ? 'text-red-500' : ''} />
                   </button>
                 </div>
@@ -126,6 +146,67 @@ const YoutubeVideoSection = ({ videos }) => {
           </button>
         </div>
       </div>
+
+      {/* Video Modal */}
+      <AnimatePresence>
+        {isModalOpen && selectedVideo && (
+          <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={closeVideoModal}
+          >
+            <motion.div
+              className="relative w-full max-w-4xl bg-black rounded-xl overflow-hidden"
+              initial={{ scale: 0.9 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.9 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close button positioned safely in top-left corner */}
+              <button
+                className="absolute top-4 left-4 z-50 bg-black/70 hover:bg-black/90 rounded-full w-10 h-10 flex items-center justify-center backdrop-blur-sm border border-white/20 transition-all"
+                onClick={closeVideoModal}
+              >
+                <FaTimes className="text-white text-xl" />
+              </button>
+
+              {/* Video container */}
+              <div className="aspect-video w-full">
+                <iframe
+                  src={`https://www.youtube.com/embed/${selectedVideo.id}?autoplay=1`}
+                  title={selectedVideo.title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="w-full h-full"
+                  frameBorder="0"
+                />
+              </div>
+
+              {/* Video info below the video */}
+              <div className="p-4 bg-black text-white">
+                <h3 className="text-xl font-bold mb-2">{selectedVideo.title}</h3>
+                <div className="flex flex-wrap gap-2 mb-2">
+                  <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-white/10 text-sm">
+                    <FaUniversity className="mr-1" /> {selectedVideo.university}
+                  </span>
+                  <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-white/10 text-sm">
+                    <FaGlobe className="mr-1" /> {selectedVideo.country}
+                  </span>
+                  <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-white/10 text-sm">
+                    <FaGraduationCap className="mr-1" /> {selectedVideo.category}
+                  </span>
+                </div>
+                <div className="flex justify-between text-sm text-gray-300">
+                  <span>Posted by @{selectedVideo.userId}</span>
+                  <span>{selectedVideo.viewedBy.toLocaleString()} views</span>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };

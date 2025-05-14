@@ -18,13 +18,13 @@ const HeroSection = () => {
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-neutral-50 to-neutral-100">
       {/* Animated background elements */}
-      <motion.div 
+      <motion.div
         className="absolute top-0 left-0 w-full h-full -z-10 overflow-hidden"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
-        <motion.div 
+        <motion.div
           className="absolute top-10% left-10% w-40 sm:w-60 md:w-80 h-40 sm:h-60 md:h-80 rounded-full bg-primary/5 blur-3xl"
           animate={{
             x: [0, 50, 0],
@@ -36,7 +36,7 @@ const HeroSection = () => {
             ease: "easeInOut",
           }}
         />
-        <motion.div 
+        <motion.div
           className="absolute bottom-10% right-10% w-48 sm:w-72 md:w-96 h-48 sm:h-72 md:h-96 rounded-full bg-secondary/5 blur-3xl"
           animate={{
             x: [0, -40, 0],
@@ -56,7 +56,7 @@ const HeroSection = () => {
           {/* Text Content */}
           <div className="w-full lg:w-1/2 space-y-6 md:space-y-8">
             {/* Animated badge */}
-            <motion.div 
+            <motion.div
               className="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-white shadow-lg border border-neutral-200 text-xs sm:text-sm font-medium text-primary-dark"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -70,9 +70,9 @@ const HeroSection = () => {
                 ))}
               </div>
             </motion.div>
-            
+
             {/* Headline with animated gradient */}
-            <motion.h1 
+            <motion.h1
               className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] xl:text-[4rem] font-bold font-serif leading-tight tracking-tight"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -85,18 +85,18 @@ const HeroSection = () => {
             </motion.h1>
 
             {/* Description */}
-            <motion.p 
+            <motion.p
               className="text-base sm:text-lg md:text-xl text-neutral-600 max-w-lg leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.6 }}
             >
-              Personalized pathways to scholarships, top universities, and programs worldwide. 
+              Personalized pathways to scholarships, top universities, and programs worldwide.
               Our AI-powered platform matches you with perfect opportunities.
             </motion.p>
 
             {/* Interactive Search Box */}
-            <motion.div 
+            <motion.div
               className="bg-white rounded-xl sm:rounded-2xl shadow-xl sm:shadow-2xl border border-neutral-200 overflow-hidden transition-all duration-300 hover:shadow-2xl sm:hover:shadow-3xl"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -104,25 +104,25 @@ const HeroSection = () => {
             >
               {/* Tab buttons - now scrollable on mobile */}
               <div className="flex overflow-x-auto no-scrollbar border-b border-neutral-200">
-                <button 
+                <button
                   onClick={() => setActiveTab('scholarships')}
                   className={`flex-none sm:flex-1 flex items-center justify-center gap-2 sm:gap-3 px-3 py-3 sm:px-5 sm:py-4 text-sm sm:text-base font-medium transition-all ${activeTab === 'scholarships' ? 'text-white bg-gradient-to-r from-primary to-secondary' : 'text-neutral-600 hover:bg-neutral-50'}`}
                 >
-                  <FaGraduationCap className="text-sm sm:text-base" /> 
+                  <FaGraduationCap className="text-sm sm:text-base" />
                   <span>Scholarships</span>
                 </button>
-                <button 
+                <button
                   onClick={() => setActiveTab('universities')}
                   className={`flex-none sm:flex-1 flex items-center justify-center gap-2 sm:gap-3 px-3 py-3 sm:px-5 sm:py-4 text-sm sm:text-base font-medium transition-all ${activeTab === 'universities' ? 'text-white bg-gradient-to-r from-primary to-secondary' : 'text-neutral-600 hover:bg-neutral-50'}`}
                 >
-                  <FaUniversity className="text-sm sm:text-base" /> 
+                  <FaUniversity className="text-sm sm:text-base" />
                   <span>Universities</span>
                 </button>
-                <button 
+                <button
                   onClick={() => setActiveTab('courses')}
                   className={`flex-none sm:flex-1 flex items-center justify-center gap-2 sm:gap-3 px-3 py-3 sm:px-5 sm:py-4 text-sm sm:text-base font-medium transition-all ${activeTab === 'courses' ? 'text-white bg-gradient-to-r from-primary to-secondary' : 'text-neutral-600 hover:bg-neutral-50'}`}
                 >
-                  <FaBook className="text-sm sm:text-base" /> 
+                  <FaBook className="text-sm sm:text-base" />
                   <span>Courses</span>
                 </button>
               </div>
@@ -150,7 +150,7 @@ const HeroSection = () => {
             </motion.div>
 
             {/* Animated Stats */}
-            <motion.div 
+            <motion.div
               className="grid grid-cols-3 gap-2 sm:gap-4"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -192,9 +192,9 @@ const HeroSection = () => {
             </motion.div>
           </div>
 
-          {/* Image Section with Floating Elements */}
-          <div className="w-full lg:w-1/2 relative mt-8 sm:mt-10 lg:mt-0">
-            <motion.div 
+          {/* Image Section with Floating Elements - hidden on small screens, visible from lg breakpoint */}
+          <div className="hidden lg:block w-full lg:w-1/2 relative mt-8 sm:mt-10 lg:mt-0">
+            <motion.div
               className="relative rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden shadow-lg sm:shadow-xl md:shadow-2xl"
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -208,12 +208,12 @@ const HeroSection = () => {
                   loading="lazy"
                 />
               </div>
-              
+
               {/* Gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/50 via-transparent to-transparent"></div>
-              
+
               {/* Floating testimonial */}
-              <motion.div 
+              <motion.div
                 className="absolute bottom-4 left-4 right-4 sm:right-auto sm:max-w-xs bg-white/95 backdrop-blur-sm p-3 sm:p-4 md:p-5 rounded-lg sm:rounded-xl shadow-lg border border-neutral-200"
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
@@ -232,9 +232,9 @@ const HeroSection = () => {
                 </div>
               </motion.div>
             </motion.div>
-            
+
             {/* Floating rocket badge */}
-            <motion.div 
+            <motion.div
               className="absolute -top-3 -right-3 sm:-top-4 sm:-right-4 md:-top-5 md:-right-5 bg-white p-2 sm:p-3 rounded-lg sm:rounded-xl shadow-lg sm:shadow-xl border border-neutral-200 text-center z-10 w-20 sm:w-24 md:w-28"
               animate={controls}
               initial={{ y: 10 }}
@@ -247,7 +247,7 @@ const HeroSection = () => {
             </motion.div>
 
             {/* Floating university logos */}
-            <motion.div 
+            <motion.div
               className="absolute -bottom-3 -left-3 sm:-bottom-4 sm:-left-4 bg-white p-2 sm:p-3 rounded-lg sm:rounded-xl shadow-md sm:shadow-lg border border-neutral-200 z-10 w-28 sm:w-32 md:w-36"
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
