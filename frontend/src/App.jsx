@@ -34,6 +34,8 @@ import CountryVideos from './components/Country/CountryVideos';
 import CountryScholarships from './components/Country/CountryScholarships';
 import ScholarshipDetail from './components/Country/ScholarshipDetail';
 
+import VideoGallery from './pages/VideoGallery';
+
 function App() {
   const [currentUser,] = useState(null);
 
@@ -73,6 +75,8 @@ function App() {
             <Route path=":scholarshipId" element={<ScholarshipDetail />} />
           </Route>
         </Route>
+
+        <Route path="/Videos" element={<DefaultLayout><VideoGallery /></DefaultLayout>} />
 
         <Route path="*" element={<DefaultLayout><NotFound /></DefaultLayout>} />
       </Routes>

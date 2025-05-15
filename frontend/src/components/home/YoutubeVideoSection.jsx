@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { FaPlay, FaHeart, FaEye, FaGlobe, FaUniversity, FaGraduationCap, FaChevronRight, FaTimes } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 const YoutubeVideoSection = ({ videos }) => {
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const navigate = useNavigate();
 
   // Sample data structure (will be replaced with your actual data from DB)
   const sampleVideos = [
@@ -138,9 +140,11 @@ const YoutubeVideoSection = ({ videos }) => {
           ))}
         </div>
 
-        {/* View more button */}
         <div className="text-center mt-12">
-          <button className="inline-flex items-center px-6 py-3 bg-primary text-white font-medium rounded-lg shadow-md hover:shadow-lg transition-all">
+          <button
+            onClick={() => navigate('/Videos')}
+            className="inline-flex items-center px-6 py-3 bg-primary text-white font-medium rounded-lg shadow-md hover:shadow-lg transition-all"
+          >
             Browse All Videos
             <FaChevronRight className="ml-2" />
           </button>
