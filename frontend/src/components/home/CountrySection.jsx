@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaChevronRight } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const CountriesSection = () => {
   // Sample country data - replace with your actual data
@@ -27,7 +28,7 @@ const CountriesSection = () => {
         {/* Countries Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6 mb-10 md:mb-12 lg:mb-16">
           {featuredCountries.map((country, index) => (
-            <div 
+            <div
               key={index}
               className="bg-neutral-50 hover:bg-neutral-100 border border-neutral-200 rounded-xl p-4 sm:p-5 transition-all duration-300 hover:shadow-md"
             >
@@ -40,10 +41,12 @@ const CountriesSection = () => {
 
         {/* Browse All Button */}
         <div className="text-center">
-          <button className="inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-4 border border-primary rounded-full text-primary font-medium hover:bg-primary hover:text-white transition-all duration-300 group">
-            <span>Browse All Countries</span>
-            <FaChevronRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-          </button>
+          <Link to="/Countries">
+            <button className="inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-4 border border-primary rounded-full text-white font-medium bg-primary hover:text-white transition-all duration-300 group">
+              <span>Browse All Countries</span>
+              <FaChevronRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+            </button>
+          </Link>
         </div>
 
         {/* Stats Bar */}

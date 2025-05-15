@@ -27,8 +27,15 @@ import ScholarshipGuide from './pages/ScholarshipGuide';
 import VisaInformation from './pages/VisaInformation';
 import StudentStories from './pages/StudentStories';
 
+import CountryGuide from './pages/CountryGuide';
+import CountriesList from './components/Contry/CountriesList';
+import CountryDetails from './components/Contry/CountryDetails';
+import CountryVideos from './components/Contry/CountryVideos';
+import CountryScholarships from './components/Contry/CountryScholarships';
+import ScholarshipDetail from './components/Contry/ScholarshipDetail';
+
 function App() {
-  const [currentUser, ] = useState(null);
+  const [currentUser,] = useState(null);
 
   return (
     <Router>
@@ -41,7 +48,7 @@ function App() {
         <Route path="/universities" element={<DefaultLayout><Universities /></DefaultLayout>} />
         <Route path="/courses" element={<DefaultLayout><Courses /></DefaultLayout>} />
         <Route path="/premium" element={<DefaultLayout><Premium /></DefaultLayout>} />
-        <Route path="/chat" element={<DefaultLayout><Chat currentUser={currentUser}/></DefaultLayout>} />
+        <Route path="/chat" element={<DefaultLayout><Chat currentUser={currentUser} /></DefaultLayout>} />
         <Route path="/signup" element={<AuthLayout><SignUpPage /></AuthLayout>} />
         <Route path="/login" element={<AuthLayout><LoginPage /></AuthLayout>} />
 
@@ -56,6 +63,16 @@ function App() {
         <Route path="/scholarship-guide" element={<DefaultLayout><ScholarshipGuide /></DefaultLayout>} />
         <Route path="/Visa-info" element={<DefaultLayout><VisaInformation /></DefaultLayout>} />
         <Route path="/student-stories" element={<DefaultLayout><StudentStories /></DefaultLayout>} />
+
+        {/* Parent Route */}
+        <Route path="/Countries" element={<DefaultLayout><CountryGuide /></DefaultLayout>}>
+          <Route index element={<CountriesList />} />
+          <Route path=":countryId" element={<CountryDetails />} />
+          <Route path=":countryId/videos" element={<CountryVideos />} />
+          <Route path="/Countries/:countryId/scholarships" element={<CountryScholarships />}>
+            <Route path=":scholarshipId" element={<ScholarshipDetail />} />
+          </Route>
+        </Route>
 
         <Route path="*" element={<DefaultLayout><NotFound /></DefaultLayout>} />
       </Routes>
