@@ -28,11 +28,11 @@ import VisaInformation from './pages/VisaInformation';
 import StudentStories from './pages/StudentStories';
 
 import CountryGuide from './pages/CountryGuide';
-import CountriesList from './components/Contry/CountriesList';
-import CountryDetails from './components/Contry/CountryDetails';
-import CountryVideos from './components/Contry/CountryVideos';
-import CountryScholarships from './components/Contry/CountryScholarships';
-import ScholarshipDetail from './components/Contry/ScholarshipDetail';
+import CountriesList from './components/Country/CountriesList';
+import CountryDetails from './components/Country/CountryDetails';
+import CountryVideos from './components/Country/CountryVideos';
+import CountryScholarships from './components/Country/CountryScholarships';
+import ScholarshipDetail from './components/Country/ScholarshipDetail';
 
 function App() {
   const [currentUser,] = useState(null);
