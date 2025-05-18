@@ -1,11 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import AboutHero from '../components/about/AboutHero';
-import MissionSection from '../components/about/Mission';
-import TeamSection from '../components/about/Team';
-import StatsSection from '../components/about/Stats';
-import ValuesSection from '../components/about/Values';
-import TestimonialsSection from '../components/about/Testimonals';
+import AboutHero from '../../components/students/about/AboutHero';
+import MissionSection from '../../components/students/about/Mission';
+import TeamSection from '../../components/students/about/Team';
+import StatsSection from '../../components/students/about/Stats';
+import ValuesSection from '../../components/students/about/Values';
+import TestimonialsSection from '../../components/students/about/Testimonals';
 
 const AboutPage = () => {
   return (

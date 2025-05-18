@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import TipsHeader from '../components/tips/TipsHeader';
-import TipsList from '../components/tips/TipsList';
-import TipDetail from '../components/tips/TipDetail';
+import TipsHeader from '../../components/students/tips/TipsHeader';
+import TipsList from '../../components/students/tips/TipsList';
+import TipDetail from '../../components/students/tips/TipDetail';
 
 const ApplicationTips = () => {
   const [selectedTip, setSelectedTip] = useState(null);

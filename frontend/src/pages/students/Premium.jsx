@@ -1,11 +1,11 @@
 // src/components/premium/Premium.js
 import React from 'react';
 import { motion } from 'framer-motion';
-import PremiumHero from '../components/premium/PremiumHero';
-import PremiumFeatures from '../components/premium/PremiumFeatures';
-import PricingPlans from '../components/premium/PricingPlans';
-import PremiumTestimonials from '../components/premium/PremiumTestimonials';
-import FAQ from '../components/premium/FAQ';
+import PremiumHero from '../../components/students/premium/PremiumHero';
+import PremiumFeatures from '../../components/students/premium/PremiumFeatures';
+import PricingPlans from '../../components/students/premium/PricingPlans';
+import PremiumTestimonials from '../../components/students/premium/PremiumTestimonials';
+import FAQ from '../../components/students/premium/FAQ';
 
 const Premium = () => {
   return (

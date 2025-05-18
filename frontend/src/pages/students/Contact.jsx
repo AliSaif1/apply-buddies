@@ -1,9 +1,9 @@
 // src/components/contact/Contact.js
 import React, { useState } from 'react';
-import ContactHeader from '../components/contact/ContactHeader';
-import ContactForm from '../components/contact/ContactForm';
-import ContactInfo from '../components/contact/ContactInfo';
-import ContactMap from '../components/contact/ContactMap';
+import ContactHeader from '../../components/students/contact/ContactHeader';
+import ContactForm from '../../components/students/contact/ContactForm';
+import ContactInfo from '../../components/students/contact/ContactInfo';
+import ContactMap from '../../components/students/contact/ContactMap';
 
 const Contact = () => {
   const [formData, setFormData] = useState({

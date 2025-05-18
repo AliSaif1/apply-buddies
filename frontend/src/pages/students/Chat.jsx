@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
-import { db } from '../firebase';
+import { db } from '../../firebase';
 import { collection, getDocs, query, orderBy, limit, addDoc, serverTimestamp } from 'firebase/firestore';
-import ChatMessages from '../components/chat/ChatMessages';
-import ChatInput from '../components/chat/ChatInput';
-import ChatHeader from '../components/chat/ChatHeader';
+import ChatMessages from '../../components/students/chat/ChatMessages';
+import ChatInput from '../../components/students/chat/ChatInput';
+import ChatHeader from '../../components/students/chat/ChatHeader';
 
 const Chat = ({ currentUser }) => {
   const [messages, setMessages] = useState([]);

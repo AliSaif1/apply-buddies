@@ -1,10 +1,10 @@
 // src/components/visa/VisaInformation.js
 import React from 'react';
-import VisaHeader from '../components/visa/VisaHeader';
-import VisaTypes from '../components/visa/VisaTypes';
-import VisaRequirements from '../components/visa/VisaRequirements';
-import VisaProcess from '../components/visa/VisaProcess';
-import VisaTips from '../components/visa/VisaTips';
+import VisaHeader from '../../components/students/visa/VisaHeader';
+import VisaTypes from '../../components/students/visa/VisaTypes';
+import VisaRequirements from '../../components/students/visa/VisaRequirements';
+import VisaProcess from '../../components/students/visa/VisaProcess';
+import VisaTips from '../../components/students/visa/VisaTips';
 
 const VisaInformation = () => {
   return (

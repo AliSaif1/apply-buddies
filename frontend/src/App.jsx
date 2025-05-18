@@ -4,37 +4,49 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import ScrollToTop from './components/ScrollToTop';
 
+// Layouts
 import DefaultLayout from './layouts/DefaultLayout';
 import AuthLayout from './layouts/AuthLayout';
+import AdminLayout from './layouts/AdminLayout';
 
-import Home from './pages/Home';
-import Scholarships from './pages/Scholarships';
-import Universities from './pages/Universities';
-import Courses from './pages/Courses';
-import Premium from './pages/Premium';
-import Chat from './pages/Chat';
-import SignUpPage from './pages/SignUp';
-import LoginPage from './pages/Login';
-import NotFound from './pages/NotFound';
+// Student Pages
+import Home from './pages/students/Home';
+import Scholarships from './pages/students/Scholarships';
+import Universities from './pages/students/Universities';
+import Courses from './pages/students/Courses';
+import Premium from './pages/students/Premium';
+import Chat from './pages/students/Chat';
+import SignUpPage from './pages/students/SignUp';
+import LoginPage from './pages/students/Login';
+import NotFound from './pages/students/NotFound';
 
-import About from './pages/About';
-import Contact from './pages/Contact';
-import BlogList from './components/blog/BlogList';
-import BlogPage from './components/blog/BlogPage';
+import About from './pages/students/About';
+import Contact from './pages/students/Contact';
+import BlogList from './components/students/blog/BlogList';
+import BlogPage from './components/students/blog/BlogPage';
 
-import ApplicationTips from './pages/ApplicationTips';
-import ScholarshipGuide from './pages/ScholarshipGuide';
-import VisaInformation from './pages/VisaInformation';
-import StudentStories from './pages/StudentStories';
+import ApplicationTips from './pages/students/ApplicationTips';
+import ScholarshipGuide from './pages/students/ScholarshipGuide';
+import VisaInformation from './pages/students/VisaInformation';
+import StudentStories from './pages/students/StudentStories';
 
-import CountryGuide from './pages/CountryGuide';
-import CountriesList from './components/Country/CountriesList';
-import CountryDetails from './components/Country/CountryDetails';
-import CountryVideos from './components/Country/CountryVideos';
-import CountryScholarships from './components/Country/CountryScholarships';
-import ScholarshipDetail from './components/Country/ScholarshipDetail';
+import CountryGuide from './pages/students/CountryGuide';
+import CountriesList from './components/students/Country/CountriesList';
+import CountryDetails from './components/students/Country/CountryDetails';
+import CountryVideos from './components/students/Country/CountryVideos';
+import CountryScholarships from './components/students/Country/CountryScholarships';
+import ScholarshipDetail from './components/students/Country/ScholarshipDetail';
 
-import VideoGallery from './pages/VideoGallery';
+import VideoGallery from './pages/students/VideoGallery';
+
+// Admin Pages
+import Dashboard from './pages/admin/Dashboard';
+import ManageAdmins from './pages/admin/ManageAdmins';
+import Countries from './pages/admin/Countries';
+import AdminUniversities from './pages/admin/Universities';
+import Videos from './pages/admin/Videos';
+import Scholarship from './pages/admin/Scholarships';
+import Analytics from './pages/admin/Analytics';
 
 function App() {
   const [currentUser,] = useState(null);
@@ -44,6 +56,7 @@ function App() {
       <ScrollToTop />
       <Routes>
 
+        {/* ------------------ Student Routes ------------------ */}
         {/* Header Quick Links */}
         <Route path="/" element={<DefaultLayout><Home /></DefaultLayout>} />
         <Route path="/scholarships" element={<DefaultLayout><Scholarships /></DefaultLayout>} />
@@ -77,6 +90,17 @@ function App() {
         </Route>
 
         <Route path="/Videos" element={<DefaultLayout><VideoGallery /></DefaultLayout>} />
+
+
+         {/* ------------------ Admin Routes ------------------ */}
+         {/* -- Dashboard routes -- */}
+        <Route path="/admin" element={<AdminLayout><Dashboard /></AdminLayout>} />
+        <Route path="/admin/admins" element={<AdminLayout><ManageAdmins /></AdminLayout>} />
+        <Route path="/admin/countries" element={<AdminLayout><Countries /></AdminLayout>} />
+        <Route path="/admin/universities" element={<AdminLayout><AdminUniversities /></AdminLayout>} />
+        <Route path="/admin/videos" element={<AdminLayout><Videos /></AdminLayout>} />
+        <Route path="/admin/scholarships" element={<AdminLayout><Scholarship /></AdminLayout>} />
+        <Route path="/admin/analytics" element={<AdminLayout><Analytics /></AdminLayout>} />
 
         <Route path="*" element={<DefaultLayout><NotFound /></DefaultLayout>} />
       </Routes>

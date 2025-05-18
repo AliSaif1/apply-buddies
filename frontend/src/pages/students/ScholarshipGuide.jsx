@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import GuideHeader from '../components/guide/GuideHeader';
-import GuideList from '../components/guide/GuideList';
-import GuideDetail from '../components/guide/GuideDetail';
+import GuideHeader from '../../components/students/guide/GuideHeader';
+import GuideList from '../../components/students/guide/GuideList';
+import GuideDetail from '../../components/students/guide/GuideDetail';
 
 const ScholarshipGuide = () => {
   const [selectedGuide, setSelectedGuide] = useState(null);

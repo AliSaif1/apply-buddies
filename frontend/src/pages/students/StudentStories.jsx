@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import StoriesHeader from '../components/stdStory/StoriesHeader';
-import StoriesList from '../components/stdStory/StoriesList';
-import StoryDetail from '../components/stdStory/StoryDetail';
+import StoriesHeader from '../../components/students/stdStory/StoriesHeader';
+import StoriesList from '../../components/students/stdStory/StoriesList';
+import StoryDetail from '../../components/students/stdStory/StoryDetail';
 
 const StudentStories = () => {
   const [selectedStory, setSelectedStory] = useState(null);

@@ -1,9 +1,9 @@
 // src/components/scholarships/Scholarships.js
 import React, { useState } from 'react';
-import ScholarshipHero from '../components/scholarship/ScholarshipHero';
-import ScholarshipFilters from '../components/scholarship/ScholarshipFilters';
-import ScholarshipList from '../components/scholarship/ScholarshipList';
-import ScholarshipTestimonials from '../components/scholarship/ScholarshipTestimonials';
+import ScholarshipHero from '../../components/students/scholarship/ScholarshipHero';
+import ScholarshipFilters from '../../components/students/scholarship/ScholarshipFilters';
+import ScholarshipList from '../../components/students/scholarship/ScholarshipList';
+import ScholarshipTestimonials from '../../components/students/scholarship/ScholarshipTestimonials';
 
 const Scholarships = () => {
   const [filters, setFilters] = useState({

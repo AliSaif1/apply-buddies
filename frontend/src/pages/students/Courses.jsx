@@ -1,11 +1,11 @@
 // src/components/courses/Courses.js
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import CoursesHero from '../components/courses/CoursesHero';
-import CoursesCategories from '../components/courses/CoursesCategories';
-import CoursesFilter from '../components/courses/CoursesFilter';
-import CoursesList from '../components/courses/CoursesList';
-import LearningPathways from '../components/courses/LearningPathways';
+import CoursesHero from '../../components/students/courses/CoursesHero';
+import CoursesCategories from '../../components/students/courses/CoursesCategories';
+import CoursesFilter from '../../components/students/courses/CoursesFilter';
+import CoursesList from '../../components/students/courses/CoursesList';
+import LearningPathways from '../../components/students/courses/LearningPathways';
 
 const Courses = () => {
   const [filters, setFilters] = useState({

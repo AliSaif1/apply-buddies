@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import HeroSection from '../components/video/HeroSection';
-import FilterControls from '../components/video/FilterControls';
-import VideoSection from '../components/video/VideoSection';
-import VideoModal from '../components/video/VideoModal';
-import { videoData } from '../components/video/videoData';
+import HeroSection from '../../components/students/video/HeroSection';
+import FilterControls from '../../components/students/video/FilterControls';
+import VideoSection from '../../components/students/video/VideoSection';
+import VideoModal from '../../components/students/video/VideoModal';
+import { videoData } from '../../components/students/video/videoData';
 
 const VideoGallery = () => {
   const [selectedVideo, setSelectedVideo] = useState(null);

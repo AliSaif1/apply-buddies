@@ -1,9 +1,9 @@
 import React from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
-import HeroSection from '../components/Country/HeroSection';
-import Testimonials from '../components/Country/Testimonials';
-import StatsSection from '../components/Country/StatsSection';
-import ScrollToTop from '../components/ScrollToTop'; // Import ScrollToTop
+import HeroSection from '../../components/students/Country/HeroSection';
+import Testimonials from '../../components/students/Country/Testimonials';
+import StatsSection from '../../components/students/Country/StatsSection';
+import ScrollToTop from '../../components/ScrollToTop'; // Import ScrollToTop
 
 const CountryGuide = () => {
   const location = useLocation(); // Get current route info

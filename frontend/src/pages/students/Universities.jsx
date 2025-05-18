@@ -1,11 +1,11 @@
 // src/components/universities/Universities.js
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import UniversitiesHero from '../components/university/UniversitiesHero';
-import UniversitiesFilters from '../components/university/UniversitiesFilters';
-import UniversitiesList from '../components/university/UniversitiesList';
+import UniversitiesHero from '../../components/students/university/UniversitiesHero';
+import UniversitiesFilters from '../../components/students/university/UniversitiesFilters';
+import UniversitiesList from '../../components/students/university/UniversitiesList';
 // import UniversitiesMap from '../components/university/UniversitiesMap';
-import UniversitiesTestimonials from '../components/university/UniversitiesTestimonials';
+import UniversitiesTestimonials from '../../components/students/university/UniversitiesTestimonials';
 
 const Universities = () => {
     const [filters, setFilters] = useState({

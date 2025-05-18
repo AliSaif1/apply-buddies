@@ -1,15 +1,15 @@
 // src/pages/HomePage.js
 import React from 'react';
 import { motion } from 'framer-motion';
-import HeroSection from '../components/home/Hero';
-import FeaturesSection from '../components/home/Feature';
-import ScholarshipsSection from '../components/home/Scholarship';
-import UniversitiesSection from '../components/home/University';
-import ServicesSection from '../components/home/Service';
-import TestimonialsSection from '../components/home/Testimonal';
-import NewsletterSection from '../components/home/NewsLetter';
-import YoutubeVideoSection from '../components/home/YoutubeVideoSection';
-import CountrySection from '../components/home/CountrySection';
+import HeroSection from '../../components/students/home/Hero';
+import FeaturesSection from '../../components/students/home/Feature';
+import ScholarshipsSection from '../../components/students/home/Scholarship';
+import UniversitiesSection from '../../components/students/home/University';
+import ServicesSection from '../../components/students/home/Service';
+import TestimonialsSection from '../../components/students/home/Testimonal';
+import NewsletterSection from '../../components/students/home/NewsLetter';
+import YoutubeVideoSection from '../../components/students/home/YoutubeVideoSection';
+import CountrySection from '../../components/students/home/CountrySection';
 
 // Animation variants
 const containerVariants = {
