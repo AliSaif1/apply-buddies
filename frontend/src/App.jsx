@@ -1,4 +1,3 @@
-// src/App.jsx
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -16,8 +15,13 @@ import Universities from './pages/students/Universities';
 import Courses from './pages/students/Courses';
 import Premium from './pages/students/Premium';
 import Chat from './pages/students/Chat';
-import SignUpPage from './pages/students/SignUp';
-import LoginPage from './pages/students/Login';
+
+// Auth Pages
+import SignUpPage from './pages/SignUp';
+import LoginPage from './pages/Login';
+import ForgotPasswordPage from './pages/ForgotPasswordPage';
+import VerifyOTPPage from './pages/VerifyOTPPage';
+import ResetPasswordPage from './pages/ResetPasswordPage';
 import NotFound from './pages/students/NotFound';
 
 import About from './pages/students/About';
@@ -64,8 +68,13 @@ function App() {
         <Route path="/courses" element={<DefaultLayout><Courses /></DefaultLayout>} />
         <Route path="/premium" element={<DefaultLayout><Premium /></DefaultLayout>} />
         <Route path="/chat" element={<DefaultLayout><Chat currentUser={currentUser} /></DefaultLayout>} />
+
+        {/* Auth Pages */}
         <Route path="/signup" element={<AuthLayout><SignUpPage /></AuthLayout>} />
         <Route path="/login" element={<AuthLayout><LoginPage /></AuthLayout>} />
+        <Route path="/forgot-password" element={<AuthLayout><ForgotPasswordPage /></AuthLayout>} />
+        <Route path="/verify-otp" element={<AuthLayout><VerifyOTPPage /></AuthLayout>} />
+        <Route path="/reset-password" element={<AuthLayout><ResetPasswordPage /></AuthLayout>} />
 
         {/* Footer Quick Links */}
         <Route path="/about" element={<DefaultLayout><About /></DefaultLayout>} />
@@ -92,8 +101,8 @@ function App() {
         <Route path="/Videos" element={<DefaultLayout><VideoGallery /></DefaultLayout>} />
 
 
-         {/* ------------------ Admin Routes ------------------ */}
-         {/* -- Dashboard routes -- */}
+        {/* ------------------ Admin Routes ------------------ */}
+        {/* -- Dashboard routes -- */}
         <Route path="/admin" element={<AdminLayout><Dashboard /></AdminLayout>} />
         <Route path="/admin/admins" element={<AdminLayout><ManageAdmins /></AdminLayout>} />
         <Route path="/admin/countries" element={<AdminLayout><Countries /></AdminLayout>} />

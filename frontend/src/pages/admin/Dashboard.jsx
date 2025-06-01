@@ -46,26 +46,6 @@ const Dashboard = () => {
         ))}
       </div>
 
-      {/* Quick Actions */}
-      {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-        <button className="bg-secondary hover:bg-secondary-light text-neutral p-3 rounded-lg flex items-center justify-center space-x-2 transition-colors">
-          <FaGlobeAmericas className="text-sm sm:text-base" />
-          <span className="text-sm sm:text-base">Add Country</span>
-        </button>
-        <button className="bg-accent hover:bg-accent-light text-neutral p-3 rounded-lg flex items-center justify-center space-x-2 transition-colors">
-          <FaUniversity className="text-sm sm:text-base" />
-          <span className="text-sm sm:text-base">Add University</span>
-        </button>
-        <button className="bg-warning hover:bg-opacity-80 text-neutral p-3 rounded-lg flex items-center justify-center space-x-2 transition-colors">
-          <FaVideo className="text-sm sm:text-base" />
-          <span className="text-sm sm:text-base">Add Video</span>
-        </button>
-        <button className="bg-success hover:bg-opacity-80 text-neutral p-3 rounded-lg flex items-center justify-center space-x-2 transition-colors">
-          <FaGraduationCap className="text-sm sm:text-base" />
-          <span className="text-sm sm:text-base">Add Scholarship</span>
-        </button>
-      </div> */}
-
       {/* Recent Activity and Analytics */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
         {/* Recent Activity */}

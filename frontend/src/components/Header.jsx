@@ -1,19 +1,46 @@
-// src/components/Header.js
 import React, { useState, useEffect } from 'react';
 import { FaSearch, FaCrown, FaCommentAlt, FaTimes, FaBars } from 'react-icons/fa';
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation, Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activePage, setActivePage] = useState('/');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setActivePage(location.pathname);
+
+    // Check login status based on token existence in localStorage
+    const token = localStorage.getItem('token');
+    setIsLoggedIn(!!token);
   }, [location]);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const handleLogout = async () => {
+    try {
+      await axios.post(
+        'http://localhost:3001/apply-buddies/auth/logout',
+        {},
+        {
+          withCredentials: true, // Important for cookie-based auth
+        }
+      );
+
+      // Clear local storage
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+
+      // Redirect to login
+      navigate('/login');
+    } catch (error) {
+      console.error('Logout failed:', error);
+    }
   };
 
   const navItems = [
@@ -35,9 +62,9 @@ const Header = () => {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo Section */}
           <Link to="/" className="flex items-center space-x-2">
-            <img 
-              src="/logo.png" 
-              alt="ApplyBuddies Logo" 
+            <img
+              src="/logo.png"
+              alt="ApplyBuddies Logo"
               className="h-8 w-8 md:h-10 md:w-10 rounded-full"
             />
             <h1 className="text-xl md:text-2xl font-bold text-primary font-serif">
@@ -64,20 +91,32 @@ const Header = () => {
             <button className="flex items-center justify-center p-2 rounded-full text-gray-500 hover:bg-neutral transition-colors">
               <FaSearch className="h-4 w-4" />
             </button>
-            
+
             <div className="flex space-x-2">
-              <Link 
-                to="/login" 
-                className="px-4 py-2 text-sm font-medium rounded-lg border border-primary text-primary hover:bg-neutral transition-colors"
-              >
-                Login
-              </Link>
-              <Link 
-                to="/signup" 
-                className="px-4 py-2 text-sm font-medium rounded-lg bg-secondary hover:bg-secondary-light text-white transition-colors"
-              >
-                Sign Up
-              </Link>
+              {!isLoggedIn ? (
+                <>
+                  {/* Show either Login or Sign Up, or both */}
+                  <Link
+                    to="/login"
+                    className="px-4 py-2 text-sm font-medium rounded-lg border border-primary text-primary hover:bg-neutral transition-colors"
+                  >
+                    Login
+                  </Link>
+                  <Link
+                    to="/signup"
+                    className="px-4 py-2 text-sm font-medium rounded-lg bg-secondary hover:bg-secondary-light text-white transition-colors"
+                  >
+                    Sign Up
+                  </Link>
+                </>
+              ) : (
+                <button
+                  onClick={handleLogout}
+                  className="px-4 py-2 text-sm font-medium rounded-lg border border-red-500 text-red-500 hover:bg-red-50 transition-colors"
+                >
+                  Logout
+                </button>
+              )}
             </div>
           </div>
 
@@ -86,8 +125,8 @@ const Header = () => {
             <button className="md:hidden p-2 rounded-md text-gray-500 hover:bg-neutral transition-colors">
               <FaSearch className="h-4 w-4" />
             </button>
-            
-            <button 
+
+            <button
               onClick={toggleMobileMenu}
               className="p-2 rounded-md text-gray-500 hover:bg-neutral focus:outline-none transition-colors"
               aria-label="Toggle menu"
@@ -116,20 +155,34 @@ const Header = () => {
 
             <div className="mt-4 pt-4 border-t border-gray-200">
               <div className="flex flex-col space-y-2">
-                <Link 
-                  to="/login" 
-                  onClick={toggleMobileMenu}
-                  className="w-full px-4 py-2 text-base font-medium rounded-lg border border-primary text-primary hover:bg-neutral transition-colors text-center"
-                >
-                  Login
-                </Link>
-                <Link 
-                  to="/signup" 
-                  onClick={toggleMobileMenu}
-                  className="w-full px-4 py-2 text-base font-medium rounded-lg bg-secondary hover:bg-secondary-light text-white transition-colors text-center"
-                >
-                  Sign Up
-                </Link>
+                {!isLoggedIn ? (
+                  <>
+                    <Link
+                      to="/login"
+                      onClick={toggleMobileMenu}
+                      className="w-full px-4 py-2 text-base font-medium rounded-lg border border-primary text-primary hover:bg-neutral transition-colors text-center"
+                    >
+                      Login
+                    </Link>
+                    <Link
+                      to="/signup"
+                      onClick={toggleMobileMenu}
+                      className="w-full px-4 py-2 text-base font-medium rounded-lg bg-secondary hover:bg-secondary-light text-white transition-colors text-center"
+                    >
+                      Sign Up
+                    </Link>
+                  </>
+                ) : (
+                  <button
+                    onClick={() => {
+                      handleLogout();
+                      toggleMobileMenu();
+                    }}
+                    className="w-full px-4 py-2 text-base font-medium rounded-lg border border-red-500 text-red-500 hover:bg-red-50 transition-colors"
+                  >
+                    Logout
+                  </button>
+                )}
               </div>
             </div>
           </div>

@@ -19,9 +19,9 @@ const AdminLayout = ({ children }) => {
   useEffect(() => {
     const handleClickOutside = (event) => {
       // Close sidebar if click is outside of both sidebar and header menu button
-      if (isSidebarOpen && 
-          !sidebarRef.current?.contains(event.target) && 
-          !headerRef.current?.contains(event.target)) {
+      if (isSidebarOpen &&
+        !sidebarRef.current?.contains(event.target) &&
+        !headerRef.current?.contains(event.target)) {
         closeSidebar();
       }
     };
@@ -39,17 +39,18 @@ const AdminLayout = ({ children }) => {
 
   return (
     <div className="flex min-h-screen bg-gray-100 text-gray-900">
-      <AdminSidebar 
-        isSidebarOpen={isSidebarOpen} 
+      <AdminSidebar
+        isSidebarOpen={isSidebarOpen}
         closeSidebar={closeSidebar}
         ref={sidebarRef}
       />
+      
       <div className="flex-1 flex flex-col">
         <div ref={headerRef}>
           <AdminHeader toggleSidebar={toggleSidebar} />
         </div>
-        <main 
-          className="p-4 flex-grow" 
+        <main
+          className="p-4 flex-grow"
           onClick={() => isSidebarOpen && closeSidebar()}
         >
           {children}

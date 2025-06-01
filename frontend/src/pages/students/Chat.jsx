@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { db } from '../../firebase';
-import { collection, getDocs, query, orderBy, limit, addDoc, serverTimestamp } from 'firebase/firestore';
+import { collection, query, orderBy, limit, addDoc, serverTimestamp, onSnapshot } from 'firebase/firestore';
 import ChatMessages from '../../components/students/chat/ChatMessages';
 import ChatInput from '../../components/students/chat/ChatInput';
 import ChatHeader from '../../components/students/chat/ChatHeader';
@@ -11,24 +11,24 @@ const Chat = ({ currentUser }) => {
   const messagesEndRef = useRef(null);
 
   useEffect(() => {
-    const fetchMessages = async () => {
-      const q = query(
-        collection(db, 'messages'),
-        orderBy('timestamp', 'asc'),
-        limit(20) // Adjust the limit as per your needs
-      );
+    const q = query(
+      collection(db, 'messages'),
+      orderBy('timestamp', 'asc'),
+      limit(20) // Adjust the limit as needed
+    );
 
-      const querySnapshot = await getDocs(q);
-      const messagesData = [];
-      querySnapshot.forEach((doc) => {
-        messagesData.push({ id: doc.id, ...doc.data() });
-      });
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+      const messagesData = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+
       setMessages(messagesData);
       setLoading(false);
       scrollToBottom();
-    };
+    });
 
-    fetchMessages();
+    return () => unsubscribe(); // Cleanup listener on unmount
   }, []);
 
   const scrollToBottom = () => {
@@ -54,7 +54,7 @@ const Chat = ({ currentUser }) => {
   return (
     <div className="flex flex-col h-full max-w-3xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
       <ChatHeader />
-      
+
       <div className="flex-1 overflow-y-auto p-4 bg-neutral-DEFAULT">
         {loading ? (
           <div className="flex justify-center items-center h-full">
