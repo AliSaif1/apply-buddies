@@ -40,7 +40,7 @@ const ResetPasswordPage = () => {
         }
 
         try {
-            await axios.put('http://localhost:3001/apply-buddies/auth/resetPassword', {
+            await axios.put(`${process.env.REACT_APP_API_BASE_URL}/apply-buddies/auth/resetPassword`, {
                 newPassword: password,
                 resetToken
             });

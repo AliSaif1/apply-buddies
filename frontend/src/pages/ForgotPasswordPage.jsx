@@ -15,7 +15,7 @@ const ForgotPasswordPage = () => {
     setError('');
 
     try {
-      await axios.post('http://localhost:3001/apply-buddies/auth/forgot-password', { email });
+      await axios.post(`${process.env.REACT_APP_API_BASE_URL}/apply-buddies/auth/forgot-password`, { email });
       setSuccess(true);
       setTimeout(() => navigate('/verify-otp', { state: { email } }), 2000);
     } catch (err) {

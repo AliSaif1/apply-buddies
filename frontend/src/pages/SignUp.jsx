@@ -49,7 +49,7 @@ const SignUpPage = () => {
     
     if (Object.keys(newErrors).length === 0) {
       try {
-        const response = await fetch('http://localhost:3001/apply-buddies/auth/register', {
+        const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/apply-buddies/auth/register`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

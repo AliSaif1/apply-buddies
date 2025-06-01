@@ -45,7 +45,7 @@ const VerifyOTPPage = () => {
 
     try {
       const otpCode = otp.join('');
-      const response = await axios.post('http://localhost:3001/apply-buddies/auth/verify-otp', {
+      const response = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/apply-buddies/auth/verify-otp`, {
         email,
         otp: otpCode
       });
@@ -72,7 +72,7 @@ const VerifyOTPPage = () => {
     setResendSuccess(false);
 
     try {
-      await axios.post('http://localhost:3001/apply-buddies/auth/forgot-password', { email });
+      await axios.post(`${process.env.REACT_APP_API_BASE_URL}/apply-buddies/auth/forgot-password`, { email });
       setResendSuccess(true);
     } catch (err) {
       console.error('Resend OTP error:', err);

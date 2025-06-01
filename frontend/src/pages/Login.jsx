@@ -35,9 +35,10 @@ const LoginPage = () => {
     e.preventDefault();
     setIsLoading(true);
     setError('');
+    console.log(process.env.REACT_APP_API_BASE_URL); // should print "http://localhost:3001"
 
     try {
-      const res = await axios.post('http://localhost:3001/apply-buddies/auth/login', {
+      const res = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/apply-buddies/auth/login`, {
         email,
         password
       });

@@ -26,7 +26,7 @@ const AdminSidebar = React.forwardRef(({ isSidebarOpen }, ref) => {
   const handleLogout = async () => {
     try {
       await axios.post(
-        'http://localhost:3001/apply-buddies/auth/logout',
+        `${process.env.REACT_APP_API_BASE_URL}/apply-buddies/auth/logout`,
         {},
         { withCredentials: true }
       );
