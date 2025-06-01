@@ -1,4 +1,3 @@
-// src/layouts/AdminLayout.jsx
 import React, { useState, useRef, useEffect } from 'react';
 import AdminSidebar from '../components/admin/AdminSidebar';
 import AdminHeader from '../components/admin/AdminHeader';

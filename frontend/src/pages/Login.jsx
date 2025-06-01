@@ -1,9 +1,12 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setAdmin } from '../redux/authSlice';
 import axios from 'axios';
 
 const LoginPage = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -35,7 +38,6 @@ const LoginPage = () => {
     e.preventDefault();
     setIsLoading(true);
     setError('');
-    console.log(process.env.REACT_APP_API_BASE_URL); // should print "http://localhost:3001"
 
     try {
       const res = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/apply-buddies/auth/login`, {
@@ -45,10 +47,14 @@ const LoginPage = () => {
 
       const { token, user } = res.data;
 
-      // Store token and user data
+      // Save to localStorage
       localStorage.setItem('token', token);
       localStorage.setItem('user', JSON.stringify(user));
 
+      // Save to Redux
+      dispatch(setAdmin(user));
+
+      // Redirect to dashboard
       redirectToDashboard(user.type);
     } catch (err) {
       console.error('Login error:', err);

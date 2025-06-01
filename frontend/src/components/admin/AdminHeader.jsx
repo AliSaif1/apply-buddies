@@ -1,8 +1,13 @@
-// src/components/admin/AdminHeader.jsx
 import React from 'react';
 import { FiMenu, FiBell } from 'react-icons/fi';
+import { useSelector } from 'react-redux';
 
 const AdminHeader = ({ toggleSidebar }) => {
+  const admin = useSelector((state) => state.auth.admin);
+
+  const firstLetter = admin?.name?.charAt(0)?.toUpperCase() || 'A';
+  const fullName = admin?.name || 'Admin';
+
   return (
     <header className="sticky top-0 z-30 w-full bg-primary border-b border-primary-grey px-4 sm:px-6 py-3 flex justify-between items-center shadow-sm">
       <div className="flex items-center space-x-4">
@@ -24,8 +29,14 @@ const AdminHeader = ({ toggleSidebar }) => {
           <FiBell className="w-5 h-5 text-neutral" />
         </button>
         <div className="flex items-center space-x-2">
-          <div className="w-8 h-8 rounded-full bg-accent flex items-center justify-center text-neutral font-medium">A</div>
-          <span className="hidden sm:inline text-sm font-medium text-neutral">Admin</span>
+          {/* Show first letter of admin name */}
+          <div className="w-8 h-8 rounded-full bg-accent flex items-center justify-center text-neutral font-medium">
+            {firstLetter}
+          </div>
+          {/* Show full admin name */}
+          <span className="hidden sm:inline text-sm font-medium text-neutral">
+            {fullName}
+          </span>
         </div>
       </div>
     </header>
